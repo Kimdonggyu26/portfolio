@@ -12,11 +12,9 @@ export default function Home() {
           <span>Backend Developer</span>
         </div>
         <h1>
-          KIM<br />
-          DONGGYU<span className="accent">.</span>
+          KIM DONGGYU<span className="accent">.</span>
         </h1>
         <div className="hero-bottom">
-          <p className="hero-placeholder">[자기소개 문구를 입력하세요]</p>
           <p className="hero-role">Java · Spring<br />Backend Developer</p>
         </div>
       </section>
@@ -27,7 +25,6 @@ export default function Home() {
           <p className="lead">서비스가 화면에서 데이터베이스까지 어떻게 이어지는지 이해하고, 실제 문제를 끝까지 추적하는 백엔드 개발자를 지향합니다.</p>
           <div className="about-detail">
             <p>인증, 데이터 관계, 외부 API와 배포 환경을 연결해 설명할 수 있는 코드를 만들고 있습니다.</p>
-            <p className="muted">상세 소개와 이력은 추후 입력 예정입니다.</p>
           </div>
         </div>
       </section>
