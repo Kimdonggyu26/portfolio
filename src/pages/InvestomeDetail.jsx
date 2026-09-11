@@ -1,0 +1,135 @@
+import { Link } from 'react-router-dom'
+import ImagePlaceholder from '../components/ImagePlaceholder'
+import ProjectFeature from '../components/ProjectFeature'
+import SectionLabel from '../components/SectionLabel'
+import { investomeFeatures, projects } from '../data/projects'
+
+const project = projects[0]
+
+export default function InvestomeDetail() {
+  return (
+    <article className="page-enter project-detail">
+      <header className="detail-hero frame">
+        <div className="detail-breadcrumb"><Link to="/projects">Projects</Link><span>/</span><span>01</span></div>
+        <p className="eyebrow">{project.category}</p>
+        <h1>INVESTOME</h1>
+        <div className="detail-deck">
+          <p>{project.summary}</p>
+          <span>{project.period}</span>
+        </div>
+      </header>
+
+      <div className="frame"><ImagePlaceholder title="INVESTOME — KEY VISUAL" recommendation="16:9 dashboard screenshot" tone="dark" /></div>
+
+      <section className="frame section-space detail-overview">
+        <SectionLabel number="01">Overview</SectionLabel>
+        <div className="overview-grid">
+          <p className="lead">투자 정보를 탐색하고, 나의 자산을 기록하며, 다른 사용자와 의견을 나누는 흐름을 하나의 서비스로 연결했습니다.</p>
+          <dl className="project-spec">
+            <div><dt>Role</dt><dd>{project.role}</dd></div>
+            <div><dt>Stack</dt><dd>{project.stack.join(', ')}</dd></div>
+            <div><dt>Links</dt><dd><a href={project.links.live} target="_blank" rel="noreferrer">Live ↗</a> <a href={project.links.github} target="_blank" rel="noreferrer">GitHub ↗</a></dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section className="architecture section-space">
+        <div className="frame">
+          <SectionLabel number="02">Architecture</SectionLabel>
+          <div className="architecture-intro">
+            <h2>두 개의 데이터 흐름,<br />명확한 책임.</h2>
+            <p>Investome 자체 데이터는 Spring Boot가, 외부 금융 데이터는 Vercel Functions가 처리합니다.</p>
+          </div>
+          <div className="architecture-map" aria-label="Investome 시스템 구조">
+            <div className="architecture-node architecture-node--main"><span>CLIENT</span><strong>React</strong><small>UI · State · Routing</small></div>
+            <div className="architecture-branch">
+              <div className="architecture-node"><span>CORE</span><strong>Spring Boot</strong><small>Security · Business · JPA</small></div>
+              <div className="architecture-node"><span>DATA</span><strong>PostgreSQL</strong><small>User · Board · Portfolio</small></div>
+            </div>
+            <div className="architecture-branch">
+              <div className="architecture-node"><span>EDGE</span><strong>Vercel Functions</strong><small>Normalize · Cache · Fallback</small></div>
+              <div className="architecture-node"><span>PROVIDERS</span><strong>Financial APIs</strong><small>KIS · Yahoo · CoinGecko · Upbit</small></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="frame section-space">
+        <SectionLabel number="03">Key features</SectionLabel>
+        <div className="feature-list">
+          {investomeFeatures.map((feature, index) => <ProjectFeature key={feature.title} feature={feature} reverse={index % 2 === 1} />)}
+        </div>
+      </section>
+
+      <section className="engineering section-space">
+        <div className="frame">
+          <SectionLabel number="04">Engineering</SectionLabel>
+          <div className="engineering-grid">
+            <div className="engineering-title"><h2>Authentication,<br />at one boundary.</h2></div>
+            <div className="engineering-copy">
+              <p>로그인 성공 시 사용자 ID를 subject로 갖는 access token을 발급합니다. 이후 요청은 JwtAuthenticationFilter에서 검증하고 Authentication을 SecurityContext에 저장합니다.</p>
+              <p>Controller가 Authorization 헤더를 반복 파싱하던 책임을 공통 경계로 옮겼고, 공개 조회와 인증이 필요한 쓰기 API를 SecurityFilterChain에서 구분했습니다.</p>
+            </div>
+          </div>
+          <div className="flow-line">
+            {['React', 'Bearer Token', 'JWT Filter', 'SecurityContext', 'Controller'].map((item, index) => <div key={item}><span>0{index + 1}</span><strong>{item}</strong></div>)}
+          </div>
+          <div className="engineering-notes">
+            <div><span>Validation</span><p>Request DTO의 Bean Validation과 @Valid로 입력 형식을 검증합니다.</p></div>
+            <div><span>Exception</span><p>Custom Exception을 GlobalExceptionHandler가 공통 ErrorResponse로 변환합니다.</p></div>
+            <div><span>Turnstile</span><p>브라우저 token을 Spring 서버가 Cloudflare siteverify API로 재검증합니다.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="frame section-space refactoring">
+        <SectionLabel number="05">Refactoring</SectionLabel>
+        <div className="refactor-heading"><h2>From repeated checks<br />to shared boundaries.</h2><p>기능을 바꾸기보다 책임이 있어야 할 위치를 다시 정리했습니다.</p></div>
+        <div className="comparison">
+          <div className="comparison-head"><span>Before</span><span>After</span></div>
+          {[
+            ['Controller별 JWT 직접 파싱', 'JWT Filter와 SecurityContext'],
+            ['Service의 HTTP 예외 처리', 'Custom Exception과 전역 Handler'],
+            ['Service if문 입력 검증', 'DTO Validation과 @Valid'],
+            ['React의 CoinGecko 필드 의존', 'Vercel 공통 응답 정규화'],
+            ['Spring의 Google News 처리', 'Vercel 외부 API 계층으로 이동'],
+          ].map(([before, after]) => <div className="comparison-row" key={before}><p>{before}</p><span>→</span><p>{after}</p></div>)}
+        </div>
+      </section>
+
+      <section className="frame section-space troubleshooting">
+        <SectionLabel number="06">Troubleshooting</SectionLabel>
+        <h2>Problems met<br />in production.</h2>
+        <div className="case-list">
+          <details open>
+            <summary><span>01</span><strong>Vercel 배포 후 /api/ticker 404</strong><i>+</i></summary>
+            <div><p><b>원인</b> Vite middleware는 로컬 개발 서버에만 존재했고 운영 환경에는 실제 endpoint가 없었습니다.</p><p><b>해결</b> 외부 금융 API를 Vercel Functions로 이동해 배포 환경의 /api 경로와 실행 모델을 일치시켰습니다.</p></div>
+          </details>
+          <details>
+            <summary><span>02</span><strong>외부 API 실패와 누락 데이터</strong><i>+</i></summary>
+            <div><p><b>원인</b> HTTP 성공과 화면에 필요한 필드의 완전성을 같은 것으로 판단했습니다.</p><p><b>해결</b> KIS → Yahoo fallback, Yahoo quote → chart metadata 보조 경로, 종목별 독립 처리와 stale cache를 적용했습니다.</p></div>
+          </details>
+          <details>
+            <summary><span>03</span><strong>게시글 삭제 시 연관 데이터 충돌</strong><i>+</i></summary>
+            <div><p><b>원인</b> FK가 연결된 추천과 댓글보다 게시글 삭제가 먼저 시도될 수 있었습니다.</p><p><b>해결</b> transaction 안에서 추천 → 댓글 → 게시글 순서를 명시하고 cascade/orphan removal을 정리했습니다.</p></div>
+          </details>
+        </div>
+      </section>
+
+      <section className="retrospective section-space">
+        <div className="frame">
+          <SectionLabel number="07">Retrospective</SectionLabel>
+          <blockquote>“동작하는 코드”와<br />“새 환경에서 재현되는 코드”는 다르다.</blockquote>
+          <div className="retrospective-grid">
+            <p>화면 기능 하나가 React 요청, 배포 경로, 외부 공급자, Spring 비즈니스 로직과 DB 제약까지 이어진다는 것을 실제 장애를 통해 배웠습니다.</p>
+            <p>현재 access token 단독 구조, 제한적인 자동화 테스트, bundle 크기는 다음 개선 과제로 남겨두었습니다. 구현하지 않은 기능을 완성된 것처럼 설명하지 않습니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <nav className="next-project frame" aria-label="다음 페이지">
+        <span>Next</span><Link to="/projects">All projects <b>→</b></Link>
+      </nav>
+    </article>
+  )
+}
