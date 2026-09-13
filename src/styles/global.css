@@ -470,3 +470,45 @@ button, input, textarea, select { font: inherit; }
   .certification-list { border-top: 1px solid var(--line); border-left: 0; }
   .certification-list > div { padding-left: 0; }
 }
+
+
+/* Header navigation and requested type refinements */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(247, 251, 253, .96);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.nav a.active { color: var(--signal); }
+.profile-hero,
+#projects,
+#skills,
+#experience,
+#certifications,
+#contact { scroll-margin-top: 108px; }
+.project-entry--investome .project-heading h2 { font-size: clamp(2.55rem, 4.15vw, 4.55rem); }
+.project-cover-image { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; object-fit: cover; }
+.contact-callout h2 { font-size: clamp(1.875rem, 2.5vw, 2.625rem); }
+.other-projects b { font-size: .76rem; font-weight: 600; letter-spacing: .07em; }
+
+@media (max-width: 760px) {
+  .profile-hero,
+  #projects,
+  #skills,
+  #experience,
+  #certifications,
+  #contact { scroll-margin-top: 86px; }
+  .nav a[href='/#skills'],
+  .nav a[href='/#experience'] { display: inline-block; }
+  .nav { gap: 12px; font-size: .7rem; }
+  .project-entry--investome .project-heading h2 { font-size: clamp(2.45rem, 12vw, 3rem); }
+}
+
+@media (max-width: 390px) {
+  .site-header { column-gap: 12px; }
+  .wordmark { font-size: 1rem; }
+  .nav { gap: 9px; font-size: .64rem; }
+}
