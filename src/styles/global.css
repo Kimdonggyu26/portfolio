@@ -588,3 +588,19 @@ button, input, textarea, select { font: inherit; }
   object-fit: contain;
   background: var(--paper);
 }
+
+
+/* Key feature screenshot proportions */
+.feature-row .image-placeholder {
+  aspect-ratio: 2.1 / 1;
+}
+
+@media (min-width: 901px) {
+  .feature-row {
+    grid-template-columns: .82fr 2.18fr;
+    gap: 5%;
+  }
+  .feature-row--reverse {
+    grid-template-columns: 2.18fr .82fr;
+  }
+}
