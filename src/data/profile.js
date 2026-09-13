@@ -20,10 +20,10 @@ export const profileHighlights = [
 ]
 
 export const skills = [
-  { group: 'Backend', items: ['Java', 'Spring Boot', 'Spring Data JPA', 'Spring Security', 'JWT'] },
-  { group: 'Database', items: ['PostgreSQL'] },
-  { group: 'Client', items: ['React', 'Vite', 'React Native', 'Expo'] },
-  { group: 'Infra / Tools', items: ['Vercel', 'Vercel Serverless Functions', 'Docker', 'Git', 'GitHub'] },
+  { group: 'Backend', items: ['Java', 'Spring Boot', 'Spring Data JPA', 'MyBatis', 'JSP', 'Servlet', 'Spring Security', 'JWT'] },
+  { group: 'Database', items: ['PostgreSQL', 'Oracle Database'] },
+  { group: 'Client', items: ['React', 'Vite', 'React Native', 'Expo', 'HTML', 'CSS', 'JavaScript', 'jQuery / AJAX'] },
+  { group: 'Infra / Tools', items: ['Apache Tomcat', 'Vercel', 'Vercel Serverless Functions', 'Docker', 'Maven', 'Git', 'GitHub'] },
 ]
 
 export const education = [
