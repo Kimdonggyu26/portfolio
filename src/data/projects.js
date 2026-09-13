@@ -6,8 +6,8 @@ export const projects = [
 ]
 
 export const investomeFeatures = [
-  { index: '01', title: 'Market Dashboard', body: '주식·가상자산의 현재가와 등락률, 환율, 금융 뉴스를 한 화면에서 탐색합니다.', image: 'dashboard.webp', recommendation: '16:9 desktop screenshot' },
-  { index: '02', title: 'Portfolio Management', body: '인증된 사용자의 보유 종목과 목표 금액을 저장하고 본인의 데이터만 조회합니다.', image: 'portfolio.webp', recommendation: 'portfolio summary + holdings' },
-  { index: '03', title: 'Community', body: '게시글, 댓글, 추천을 제공하며 연관 데이터의 삭제 순서와 무결성을 관리합니다.', image: 'community.webp', recommendation: 'post detail + comments' },
+  { index: '01', title: 'Market Dashboard', body: '주식·가상자산의 현재가와 등락률, 환율, 금융 뉴스를 한 화면에서 탐색합니다.', image: 'dashboard.png', recommendation: '16:9 desktop screenshot' },
+  { index: '02', title: 'Portfolio Management', body: '인증된 사용자의 보유 종목과 목표 금액을 저장하고 본인의 데이터만 조회합니다.', image: 'portfolio.png', recommendation: 'portfolio summary + holdings' },
+  { index: '03', title: 'Community', body: '게시글, 댓글, 추천을 제공하며 연관 데이터의 삭제 순서와 무결성을 관리합니다.', image: 'community.png', recommendation: 'post detail + comments' },
 ]
 

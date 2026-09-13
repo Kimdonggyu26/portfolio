@@ -24,7 +24,7 @@ export default function InvestomeDetail() {
       <section className="frame section-space detail-overview">
         <SectionLabel number="01">Overview</SectionLabel>
         <div className="overview-grid">
-          <p className="lead">주식, 암호화폐, 원자재, 환율, 경제 뉴스 등 다양한 투자 정보와 나의 자산을 기록하는 마이페이지, 그리고 게시판까지의 흐름을 하나의 서비스로 연결했습니다.</p>
+          <p className="lead">주식 · 암호화폐 · 원자재 · 환율 · 경제 뉴스 등 다양한 투자 정보와 나의 자산을 기록하는 마이페이지, 그리고 게시판까지의 흐름을 하나의 서비스로 연결했습니다.</p>
           <dl className="project-spec">
             <div><dt>Role</dt><dd>{project.role}</dd></div>
             <div><dt>Stack</dt><dd>{project.stack.join(', ')}</dd></div>
@@ -37,18 +37,18 @@ export default function InvestomeDetail() {
         <div className="frame">
           <SectionLabel number="02">Architecture</SectionLabel>
           <div className="architecture-intro">
-            <h2>두 개의 데이터 흐름,<br />명확한 책임.</h2>
+            <h2>두 개의 데이터 흐름,<br />분리된 책임.</h2>
             <p>Investome 자체 데이터는 Spring Boot가,<br />외부 금융 데이터는 Vercel Functions가 처리합니다.</p>
           </div>
           <div className="architecture-map" aria-label="Investome 시스템 구조">
-            <div className="architecture-node architecture-node--main"><span>CLIENT</span><strong>React</strong><small>UI · State · Routing</small></div>
+            <div className="architecture-node architecture-node--main"><span>CLIENT</span><strong>React</strong><small>UI · State<br />Routing</small></div>
             <div className="architecture-branch">
-              <div className="architecture-node"><span>CORE</span><strong>Spring Boot</strong><small>Security · Business · JPA</small></div>
-              <div className="architecture-node"><span>DATA</span><strong>PostgreSQL</strong><small>User · Board · Portfolio</small></div>
+              <div className="architecture-node"><span>CORE</span><strong>Spring Boot</strong><small>Security · Business<br />JPA</small></div>
+              <div className="architecture-node"><span>DATA</span><strong>PostgreSQL</strong><small>User · Board<br />Portfolio</small></div>
             </div>
             <div className="architecture-branch">
-              <div className="architecture-node"><span>EDGE</span><strong>Vercel Functions</strong><small>Normalize · Cache · Fallback</small></div>
-              <div className="architecture-node"><span>PROVIDERS</span><strong>Financial APIs</strong><small>KIS · Yahoo · CoinGecko · Upbit</small></div>
+              <div className="architecture-node"><span>EDGE</span><strong>Vercel Functions</strong><small>Normalize · Cache<br />Fallback</small></div>
+              <div className="architecture-node"><span>PROVIDERS</span><strong>Financial APIs</strong><small>KIS · Yahoo<br />CoinGecko · Upbit</small></div>
             </div>
           </div>
         </div>

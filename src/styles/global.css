@@ -565,3 +565,26 @@ button, input, textarea, select { font: inherit; }
 @media (max-width: 900px) {
   .detail-summary { white-space: normal; }
 }
+
+
+/* Architecture hierarchy and readability */
+.architecture .section-label span {
+  color: var(--sky);
+  font-weight: 600;
+}
+.architecture-intro h2 {
+  font-size: clamp(2.35rem, 3.8vw, 4rem);
+  line-height: 1.07;
+}
+.architecture-node small {
+  font-size: .74rem;
+  line-height: 1.65;
+  letter-spacing: .075em;
+}
+.architecture-node strong {
+  line-height: 1.2;
+}
+.feature-row .project-cover-image {
+  object-fit: contain;
+  background: var(--paper);
+}
