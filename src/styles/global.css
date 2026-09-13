@@ -473,6 +473,11 @@ button, input, textarea, select { font: inherit; }
 
 
 /* Header navigation and requested type refinements */
+.site-header.frame {
+  width: 100%;
+  max-width: none;
+  padding-inline: max(32px, calc((100% - 1380px) / 2));
+}
 .site-header {
   position: sticky;
   top: 0;
@@ -505,6 +510,10 @@ button, input, textarea, select { font: inherit; }
   .nav a[href='/#experience'] { display: inline-block; }
   .nav { gap: 12px; font-size: .7rem; }
   .project-entry--investome .project-heading h2 { font-size: clamp(2.45rem, 12vw, 3rem); }
+}
+
+@media (max-width: 600px) {
+  .site-header.frame { padding-inline: 16px; }
 }
 
 @media (max-width: 390px) {
