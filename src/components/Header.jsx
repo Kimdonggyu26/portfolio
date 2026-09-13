@@ -10,7 +10,7 @@ export default function Header() {
         <NavLink to="/" end>Index</NavLink>
         <NavLink to="/projects">Projects</NavLink>
       </nav>
-      <span className="header-meta">Seoul · KR</span>
+      <span className="header-meta">Backend · Java</span>
     </header>
   )
 }
