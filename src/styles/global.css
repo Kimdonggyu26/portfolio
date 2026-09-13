@@ -40,7 +40,7 @@ button, input, textarea, select { font: inherit; }
 .nav a:hover::after, .nav a.active::after, .text-link:hover::after { right: 0; }
 .header-meta { justify-self: end; color: var(--soft-ink); font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; }
 
-.hero { min-height: min(780px, calc(100svh - 92px)); display: flex; flex-direction: column; justify-content: space-between; padding-block: 42px 44px; }
+.hero { min-height: min(700px, calc(88svh - 92px)); display: flex; flex-direction: column; justify-content: space-between; padding-block: 38px 40px; }
 .hero-kicker, .hero-bottom { display: flex; justify-content: space-between; align-items: flex-end; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
 .hero h1 { font-family: Manrope, sans-serif; max-width: 100%; font-size: clamp(4.75rem, 9vw, 8.75rem); font-weight: 500; line-height: .86; letter-spacing: -.072em; white-space: nowrap; }
 .hero-bottom { justify-content: flex-end; }
@@ -48,13 +48,13 @@ button, input, textarea, select { font: inherit; }
 
 .section-label { display: grid; grid-template-columns: 72px 1fr; padding-top: 16px; border-top: 1px solid var(--line); font-size: .86rem; font-weight: 500; letter-spacing: .065em; text-transform: uppercase; }
 .section-label span { color: var(--signal); }
-.about-copy { margin-top: clamp(56px, 6vw, 88px); display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(250px, .7fr); gap: clamp(48px, 8vw, 112px); align-items: end; }
+.about-copy { margin-top: clamp(56px, 6vw, 88px); display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(270px, .75fr); gap: clamp(40px, 7vw, 96px); align-items: center; }
 .lead { font-family: 'Noto Sans KR', sans-serif; max-width: 900px; font-size: clamp(1.75rem, 2.65vw, 2.85rem); line-height: 1.45; letter-spacing: -.035em; }
-.about-detail { max-width: 360px; padding-bottom: 5px; font-size: .98rem; line-height: 1.8; }
+.about-detail { max-width: 380px; font-size: .98rem; line-height: 1.8; }
 
 .project-entry { padding-top: clamp(72px, 7vw, 104px); }
 .project-entry--compact { padding-top: clamp(54px, 5vw, 76px); }
-.project-heading { display: grid; grid-template-columns: 80px 1fr auto; align-items: end; margin-bottom: 34px; }
+.project-heading { display: grid; grid-template-columns: 64px 1fr auto; align-items: end; margin-bottom: 34px; }
 .project-number, .project-year { color: var(--soft-ink); font-size: .84rem; }
 .project-heading h2 { margin-top: 8px; font-family: Manrope, sans-serif; font-size: clamp(3rem, 5.2vw, 5.6rem); line-height: .94; letter-spacing: -.055em; font-weight: 500; }
 .project-visual { display: block; overflow: hidden; }
