@@ -12,19 +12,19 @@ export default function InvestomeDetail() {
       <header className="detail-hero frame">
         <div className="detail-breadcrumb"><Link to="/projects">Projects</Link><span>/</span><span>01</span></div>
         <p className="eyebrow">{project.category}</p>
-        <h1>INVESTOME</h1>
+        <h1>{project.title}</h1>
         <div className="detail-deck">
-          <p>{project.summary}</p>
+          <p className="detail-summary">다양한 경제, 투자 관련 데이터와 마이페이지, 게시판 기능까지 더한 하나의 <strong>개인 투자 정보 플랫폼</strong></p>
           <span>{project.period}</span>
         </div>
       </header>
 
-      <div className="frame"><ImagePlaceholder title="INVESTOME — KEY VISUAL" recommendation="16:9 dashboard screenshot" tone="dark" /></div>
+      <div className="frame"><ImagePlaceholder src={project.cover} alt="Investome 대표 화면" title="Investome — KEY VISUAL" recommendation="16:9 dashboard screenshot" tone="dark" /></div>
 
       <section className="frame section-space detail-overview">
         <SectionLabel number="01">Overview</SectionLabel>
         <div className="overview-grid">
-          <p className="lead">투자 정보를 탐색하고, 나의 자산을 기록하며, 다른 사용자와 의견을 나누는 흐름을 하나의 서비스로 연결했습니다.</p>
+          <p className="lead">주식, 암호화폐, 원자재, 환율, 경제 뉴스 등 다양한 투자 정보와 나의 자산을 기록하는 마이페이지, 그리고 게시판까지의 흐름을 하나의 서비스로 연결했습니다.</p>
           <dl className="project-spec">
             <div><dt>Role</dt><dd>{project.role}</dd></div>
             <div><dt>Stack</dt><dd>{project.stack.join(', ')}</dd></div>
@@ -38,7 +38,7 @@ export default function InvestomeDetail() {
           <SectionLabel number="02">Architecture</SectionLabel>
           <div className="architecture-intro">
             <h2>두 개의 데이터 흐름,<br />명확한 책임.</h2>
-            <p>Investome 자체 데이터는 Spring Boot가, 외부 금융 데이터는 Vercel Functions가 처리합니다.</p>
+            <p>Investome 자체 데이터는 Spring Boot가,<br />외부 금융 데이터는 Vercel Functions가 처리합니다.</p>
           </div>
           <div className="architecture-map" aria-label="Investome 시스템 구조">
             <div className="architecture-node architecture-node--main"><span>CLIENT</span><strong>React</strong><small>UI · State · Routing</small></div>

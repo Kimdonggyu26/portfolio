@@ -8,7 +8,7 @@ export default function ProjectFeature({ feature, reverse = false }) {
         <h3>{feature.title}</h3>
         <p>{feature.body}</p>
       </div>
-      <ImagePlaceholder title={feature.title.toUpperCase()} recommendation={feature.recommendation} />
+      <ImagePlaceholder src={`/images/projects/investome/${feature.image}`} alt={`${feature.title} 화면`} title={feature.title.toUpperCase()} recommendation={feature.recommendation} />
     </article>
   )
 }
