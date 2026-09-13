@@ -20,6 +20,7 @@ export default function App() {
     <Route path="/projects/investome" element={<InvestomeDetail />} />
     <Route path="/projects/cruella" element={<ProjectPlaceholder slug="cruella" />} />
     <Route path="/projects/mvp" element={<ProjectPlaceholder slug="mvp" />} />
+    <Route path="/projects/myvitaday" element={<ProjectPlaceholder slug="myvitaday" />} />
   </Routes></main><Footer /></div>
 }
 

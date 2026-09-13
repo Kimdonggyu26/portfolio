@@ -1,7 +1,8 @@
 export const projects = [
-  { number: '01', slug: 'investome', title: 'INVESTOME', category: 'Personal Investment Information Platform', summary: '외부 금융 데이터와 자체 서비스 데이터를 한 흐름으로 연결한 개인 투자 정보 플랫폼', year: '2026', period: '2026.03 — 2026.08', role: 'Planning · Design · Frontend · Backend · Deployment', stack: ['React', 'Spring Boot', 'PostgreSQL', 'Vercel Functions'], links: { live: 'https://investome.vercel.app/', github: 'https://github.com/Kimdonggyu26/investome' } },
-  { number: '02', slug: 'cruella', title: 'CRUELLA', category: 'Project information pending', summary: '프로젝트 코드와 정보를 확인한 뒤 작성할 예정입니다.', year: 'TBD', period: 'TBD', role: 'TBD', stack: [], status: 'placeholder', links: {} },
-  { number: '03', slug: 'mvp', title: 'MVP', category: 'Project information pending', summary: '프로젝트 코드와 정보를 확인한 뒤 작성할 예정입니다.', year: 'TBD', period: 'TBD', role: 'TBD', stack: [], status: 'placeholder', links: {} },
+  { number: '01', slug: 'investome', title: 'INVESTOME', category: 'Personal Project', summary: '외부 금융 데이터와 자체 서비스 데이터를 한 흐름으로 연결한 개인 투자 정보 플랫폼', year: '2026', period: '2026.03 — 2026.08', role: 'Planning · Design · Frontend · Backend · Deployment', stack: ['React', 'Spring Boot', 'PostgreSQL', 'Vercel Functions'], status: 'completed', links: { live: 'https://investome.vercel.app/', github: 'https://github.com/Kimdonggyu26/investome' } },
+  { number: '02', slug: 'cruella', title: 'CRUELLA', category: 'Academy Team Project', summary: '구디아카데미 교육과정에서 진행한 팀 프로젝트입니다. 상세 내용은 실제 코드 확인 후 추가할 예정입니다.', year: 'TBD', period: 'TBD', role: 'TBD', stack: [], status: 'placeholder', links: {} },
+  { number: '03', slug: 'mvp', title: 'MVP', category: 'Academy Project', summary: '구디아카데미 교육과정에서 진행한 프로젝트입니다. 상세 내용은 실제 코드 확인 후 추가할 예정입니다.', year: 'TBD', period: 'TBD', role: 'TBD', stack: [], status: 'placeholder', links: {} },
+  { number: '04', slug: 'myvitaday', title: 'myVitaDay', category: 'Personal Project', summary: '현재 개발 중인 개인 프로젝트입니다. 상세 내용은 추후 추가할 예정입니다.', year: 'IN PROGRESS', period: 'TBD', role: 'TBD', stack: [], status: 'in-progress', statusLabel: 'IN PROGRESS', links: {} },
 ]
 
 export const investomeFeatures = [
