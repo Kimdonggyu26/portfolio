@@ -24,7 +24,11 @@ export default function InvestomeDetail() {
       <section className="frame section-space detail-overview">
         <SectionLabel number="01">Overview</SectionLabel>
         <div className="overview-grid">
-          <p className="lead">주식 · 암호화폐 · 원자재 · 환율 · 경제 뉴스 등 다양한 투자 정보와 나의 자산을 기록하는 마이페이지, 그리고 게시판까지의 흐름을 하나의 서비스로 연결했습니다.</p>
+          <p className="lead">
+            <span className="overview-line">주식 · 암호화폐 · 원자재 · 환율 · 경제 뉴스 등</span>
+            <span className="overview-line"><strong>다양한 투자 정보</strong>와 나의 자산을 기록하는 마이페이지,</span>
+            <span className="overview-line">그리고 게시판까지의 흐름을 <strong>하나의 서비스</strong>로 연결했습니다.</span>
+          </p>
           <dl className="project-spec">
             <div><dt>Role</dt><dd>{project.role}</dd></div>
             <div><dt>Stack</dt><dd>{project.stack.join(', ')}</dd></div>

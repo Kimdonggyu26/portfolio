@@ -604,3 +604,21 @@ button, input, textarea, select { font: inherit; }
     grid-template-columns: 2.18fr .82fr;
   }
 }
+
+
+/* Overview reading rhythm */
+.overview-grid .lead {
+  padding-left: clamp(20px, 2vw, 30px);
+  border-left: 3px solid var(--signal);
+}
+.overview-line {
+  display: block;
+}
+.overview-line strong {
+  color: var(--signal);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.overview-line + .overview-line {
+  margin-top: .12em;
+}
