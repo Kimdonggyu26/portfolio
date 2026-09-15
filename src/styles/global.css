@@ -733,41 +733,89 @@ button, input, textarea, select { font: inherit; }
 .engineering-grid {
   margin-bottom: clamp(48px, 5vw, 68px);
 }
-.engineering-code {
-  margin: 0 0 clamp(58px, 6vw, 82px);
-  border-block: 1px solid #6f91a5;
-  background: #12374e;
+
+/* Backend engineering accordion */
+.engineering-case-list {
+  border-top: 1px solid #6f91a5;
 }
-.engineering-code figcaption {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 15px 20px;
+.engineering-case-list details {
   border-bottom: 1px solid #6f91a5;
+}
+.engineering-case-list summary {
+  min-height: 96px;
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 18px;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+}
+.engineering-case-list summary::-webkit-details-marker { display: none; }
+.engineering-case-list summary > span {
   color: var(--sky);
   font-size: .75rem;
+}
+.engineering-case-list summary div {
+  display: grid;
+  grid-template-columns: minmax(240px, .8fr) 1fr;
+  gap: 28px;
+  align-items: center;
+}
+.engineering-case-list summary strong {
+  color: var(--white);
+  font-size: clamp(1.05rem, 1.55vw, 1.35rem);
+  font-weight: 500;
+}
+.engineering-case-list summary small {
+  color: #bdd1dc;
+  font-size: .72rem;
   letter-spacing: .055em;
 }
-.engineering-code figcaption small {
-  color: #bdd1dc;
-  font-size: inherit;
+.engineering-case-list summary i {
+  color: var(--sky);
+  font-style: normal;
+  font-size: 1.4rem;
+  transition: transform 180ms ease;
 }
-.engineering-code pre {
-  margin: 0;
-  padding: clamp(22px, 3vw, 36px);
-  overflow-x: auto;
-  color: #edf7fc;
-  font-family: Consolas, 'Courier New', monospace;
-  font-size: clamp(.78rem, 1vw, .9rem);
-  line-height: 1.7;
-  tab-size: 4;
+.engineering-case-list details[open] summary i { transform: rotate(45deg); }
+.engineering-case-content {
+  display: grid;
+  grid-template-columns: minmax(220px, .7fr) 1.8fr;
+  gap: clamp(30px, 5vw, 72px);
+  align-items: start;
+  padding: 12px 0 clamp(50px, 6vw, 76px) 64px;
 }
-.engineering-code code { font-family: inherit; }
+.engineering-case-copy {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 36px;
+  color: #d1e0e8;
+  line-height: 1.75;
+}
+.engineering-case-copy small {
+  color: var(--sky);
+  font-size: .68rem;
+  letter-spacing: .07em;
+}
+.engineering-case-content .image-placeholder {
+  aspect-ratio: 16 / 9;
+  border-color: #6f91a5;
+  background: #12374e;
+}
 
-@media (max-width: 600px) {
-  .engineering-code figcaption {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 5px;
+@media (max-width: 760px) {
+  .engineering-case-list summary {
+    grid-template-columns: 38px 1fr auto;
+    gap: 12px;
+  }
+  .engineering-case-list summary div {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .engineering-case-content {
+    grid-template-columns: 1fr;
+    padding-left: 38px;
   }
 }

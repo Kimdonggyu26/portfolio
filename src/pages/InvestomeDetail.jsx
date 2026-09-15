@@ -6,6 +6,33 @@ import { investomeFeatures, projects } from '../data/projects'
 
 const project = projects[0]
 
+const backendEngineeringCases = [
+  {
+    index: '01',
+    title: 'JWT 인증과 SecurityContext',
+    tech: 'OncePerRequestFilter · Spring Security',
+    body: 'Controller마다 반복하던 토큰 검증을 JwtAuthenticationFilter로 옮겼습니다. 검증된 사용자는 Authentication으로 만들어 SecurityContext에 저장합니다.',
+    image: 'backend-auth.png',
+    file: 'JwtAuthenticationFilter.java',
+  },
+  {
+    index: '02',
+    title: '요청 검증과 공통 예외 응답',
+    tech: 'Bean Validation · RestControllerAdvice',
+    body: '형식 검증은 Request DTO와 @Valid가 담당하고, 비즈니스 예외는 GlobalExceptionHandler가 일관된 ErrorResponse로 변환합니다.',
+    image: 'backend-validation-exception.png',
+    file: 'SignupRequest.java · GlobalExceptionHandler.java',
+  },
+  {
+    index: '03',
+    title: '연관 데이터 삭제와 트랜잭션',
+    tech: '@Transactional · Spring Data JPA',
+    body: '게시글 삭제 시 외래 키 충돌을 피하도록 하나의 트랜잭션 안에서 추천, 댓글, 게시글 순서로 연관 데이터를 삭제합니다.',
+    image: 'backend-transaction.png',
+    file: 'BoardService.java · deletePost()',
+  },
+]
+
 export default function InvestomeDetail() {
   return (
     <article className="page-enter project-detail">
@@ -67,34 +94,27 @@ export default function InvestomeDetail() {
 
       <section className="engineering section-space">
         <div className="frame">
-          <SectionLabel number="04">Engineering</SectionLabel>
+          <SectionLabel number="04">Backend Engineering</SectionLabel>
           <div className="engineering-grid">
-            <div className="engineering-title"><h2>JWT 인증 처리를<br />공통 필터로 분리했습니다.</h2></div>
+            <div className="engineering-title"><h2>핵심 백엔드 구현을<br />코드 중심으로 정리했습니다.</h2></div>
             <div className="engineering-copy">
-              <p>Controller마다 반복하던 토큰 검증을 JwtAuthenticationFilter로 옮겼습니다. 검증된 사용자 정보는 Authentication과 SecurityContext에 저장하고, Controller는 인증 결과만 전달받습니다.</p>
+              <p>인증, 요청 검증과 예외 처리, 데이터 무결성처럼 서비스의 안정성과 직접 연결되는 구현만 선별했습니다.</p>
             </div>
           </div>
-          <figure className="engineering-code">
-            <figcaption><span>JwtAuthenticationFilter.java</span><small>토큰 검증 후 인증 정보 저장</small></figcaption>
-            <pre><code>{`Claims claims = jwtTokenProvider.parseClaims(
-    authorization.substring(7).trim()
-);
-Long userId = Long.parseLong(claims.getSubject());
-
-AuthenticatedUser principal =
-    new AuthenticatedUser(userId, email, role);
-
-UsernamePasswordAuthenticationToken authentication =
-    new UsernamePasswordAuthenticationToken(
-        principal, null,
-        List.of(new SimpleGrantedAuthority(authority))
-    );
-
-SecurityContextHolder.getContext()
-    .setAuthentication(authentication);`}</code></pre>
-          </figure>
-          <div className="flow-line">
-            {['React', 'Bearer Token', 'JWT Filter', 'SecurityContext', 'Controller'].map((item, index) => <div key={item}><span>0{index + 1}</span><strong>{item}</strong></div>)}
+          <div className="engineering-case-list">
+            {backendEngineeringCases.map((item, index) => (
+              <details key={item.index} open={index === 0}>
+                <summary>
+                  <span>{item.index}</span>
+                  <div><strong>{item.title}</strong><small>{item.tech}</small></div>
+                  <i>+</i>
+                </summary>
+                <div className="engineering-case-content">
+                  <div className="engineering-case-copy"><p>{item.body}</p><small>CAPTURE · {item.file}</small></div>
+                  <ImagePlaceholder src={`/images/projects/investome/${item.image}`} alt={`${item.title} 코드 화면`} title={item.file} recommendation="STS or VS Code code capture" tone="dark" />
+                </div>
+              </details>
+            ))}
           </div>
         </div>
       </section>
