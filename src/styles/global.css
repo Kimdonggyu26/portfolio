@@ -819,3 +819,10 @@ button, input, textarea, select { font: inherit; }
     padding-left: 38px;
   }
 }
+
+
+/* Backend code capture rendering */
+.engineering-case-content .project-cover-image {
+  object-fit: contain;
+  background: #1e1e1e;
+}

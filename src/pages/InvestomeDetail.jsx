@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import ImagePlaceholder from '../components/ImagePlaceholder'
 import ProjectFeature from '../components/ProjectFeature'
@@ -12,26 +13,55 @@ const backendEngineeringCases = [
     title: 'JWT 인증과 SecurityContext',
     tech: 'OncePerRequestFilter · Spring Security',
     body: 'Controller마다 반복하던 토큰 검증을 JwtAuthenticationFilter로 옮겼습니다. 검증된 사용자는 Authentication으로 만들어 SecurityContext에 저장합니다.',
-    image: 'backend-auth.png',
-    file: 'JwtAuthenticationFilter.java',
+    captures: [{ image: 'backend-auth.png', file: 'JwtAuthenticationFilter.java' }],
   },
   {
     index: '02',
     title: '요청 검증과 공통 예외 응답',
     tech: 'Bean Validation · RestControllerAdvice',
     body: '형식 검증은 Request DTO와 @Valid가 담당하고, 비즈니스 예외는 GlobalExceptionHandler가 일관된 ErrorResponse로 변환합니다.',
-    image: 'backend-validation-exception.png',
-    file: 'SignupRequest.java · GlobalExceptionHandler.java',
+    captures: [
+      { image: 'backend-validation.png', file: 'SignupRequest.java' },
+      { image: 'backend-exception.png', file: 'GlobalExceptionHandler.java' },
+    ],
   },
   {
     index: '03',
     title: '연관 데이터 삭제와 트랜잭션',
     tech: '@Transactional · Spring Data JPA',
     body: '게시글 삭제 시 외래 키 충돌을 피하도록 하나의 트랜잭션 안에서 추천, 댓글, 게시글 순서로 연관 데이터를 삭제합니다.',
-    image: 'backend-transaction.png',
-    file: 'BoardService.java · deletePost()',
+    captures: [{ image: 'backend-transaction.png', file: 'BoardService.java · deletePost()' }],
   },
 ]
+
+function EngineeringCase({ item, defaultOpen }) {
+  const [isOpen, setIsOpen] = useState(defaultOpen)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const capture = item.captures[activeIndex]
+  const showPrevious = () => setActiveIndex((index) => (index - 1 + item.captures.length) % item.captures.length)
+  const showNext = () => setActiveIndex((index) => (index + 1) % item.captures.length)
+
+  return (
+    <details open={isOpen} onToggle={(event) => setIsOpen(event.currentTarget.open)}>
+      <summary>
+        <span>{item.index}</span>
+        <div><strong>{item.title}</strong><small>{item.tech}</small></div>
+        <i>+</i>
+      </summary>
+      <div className="engineering-case-content">
+        <div className="engineering-case-copy"><p>{item.body}</p><small>CAPTURE · {capture.file}</small></div>
+        <div className="feature-gallery engineering-case-gallery">
+          <ImagePlaceholder key={capture.image} src={`/images/projects/investome/${capture.image}`} alt={`${item.title} 코드 화면 ${activeIndex + 1}`} title={capture.file} recommendation="STS or VS Code code capture" tone="dark" />
+          {item.captures.length > 1 && <>
+            <button className="feature-gallery-button feature-gallery-button--previous" type="button" onClick={showPrevious} aria-label={`${item.title} 이전 코드 이미지`}>‹</button>
+            <button className="feature-gallery-button feature-gallery-button--next" type="button" onClick={showNext} aria-label={`${item.title} 다음 코드 이미지`}>›</button>
+            <span className="feature-gallery-count" aria-live="polite">{String(activeIndex + 1).padStart(2, '0')} / {String(item.captures.length).padStart(2, '0')}</span>
+          </>}
+        </div>
+      </div>
+    </details>
+  )
+}
 
 export default function InvestomeDetail() {
   return (
@@ -102,19 +132,7 @@ export default function InvestomeDetail() {
             </div>
           </div>
           <div className="engineering-case-list">
-            {backendEngineeringCases.map((item, index) => (
-              <details key={item.index} open={index === 0}>
-                <summary>
-                  <span>{item.index}</span>
-                  <div><strong>{item.title}</strong><small>{item.tech}</small></div>
-                  <i>+</i>
-                </summary>
-                <div className="engineering-case-content">
-                  <div className="engineering-case-copy"><p>{item.body}</p><small>CAPTURE · {item.file}</small></div>
-                  <ImagePlaceholder src={`/images/projects/investome/${item.image}`} alt={`${item.title} 코드 화면`} title={item.file} recommendation="STS or VS Code code capture" tone="dark" />
-                </div>
-              </details>
-            ))}
+            {backendEngineeringCases.map((item, index) => <EngineeringCase item={item} defaultOpen={index === 0} key={item.index} />)}
           </div>
         </div>
       </section>
