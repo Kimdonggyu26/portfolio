@@ -105,7 +105,15 @@ button, input, textarea, select { font: inherit; }
 .architecture, .engineering, .retrospective { background: var(--dark); color: var(--white); }
 .architecture .section-label, .engineering .section-label, .retrospective .section-label { border-color: #444; }
 .architecture-intro { margin: clamp(60px, 6vw, 84px) 0 clamp(72px, 7vw, 100px); display: grid; grid-template-columns: 1.5fr 1fr; align-items: end; gap: 8%; }
-.architecture-intro h2, .engineering h2, .refactoring h2, .troubleshooting h2 { font-family: Manrope, sans-serif; font-size: clamp(2.7rem, 4.5vw, 4.8rem); line-height: 1; letter-spacing: -.052em; font-weight: 500; }
+.architecture-intro h2, .engineering h2, .refactoring h2, .troubleshooting h2 {
+  font-family: Manrope, sans-serif;
+  font-size: clamp(2.35rem, 3.7vw, 4rem);
+  line-height: 1.14;
+  letter-spacing: -.045em;
+  font-weight: 500;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
 .architecture-intro p { color: #aaa; max-width: 420px; line-height: 1.7; }
 .architecture-map { display: grid; grid-template-columns: .75fr 1fr 1fr; border-top: 1px solid #444; border-bottom: 1px solid #444; }
 .architecture-branch { display: grid; }
@@ -152,8 +160,16 @@ button, input, textarea, select { font: inherit; }
 .case-list summary::-webkit-details-marker { display: none; }
 .case-list summary span { color: var(--signal); font-size: .76rem; }
 .case-list summary strong { font-size: clamp(1.1rem, 2vw, 1.7rem); font-weight: 500; }
-.case-list summary i { font-style: normal; font-size: 1.4rem; transition: transform 200ms ease; }
-.case-list details[open] summary i { transform: rotate(45deg); }
+.accordion-action {
+  color: var(--signal);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .035em;
+  white-space: nowrap;
+}
+.accordion-action-open { display: none; }
+details[open] > summary .accordion-action-open { display: inline; }
+details[open] > summary .accordion-action-closed { display: none; }
 .case-list details > div { display: grid; grid-template-columns: 1fr 1fr; gap: 7%; padding: 10px 0 45px 70px; color: var(--soft-ink); line-height: 1.75; }
 .case-list b { color: var(--ink); margin-right: 10px; }
 
@@ -751,7 +767,7 @@ button, input, textarea, select { font: inherit; }
   list-style: none;
 }
 .engineering-case-list summary::-webkit-details-marker { display: none; }
-.engineering-case-list summary > span {
+.engineering-case-list summary > span:first-child {
   color: var(--sky);
   font-size: .75rem;
 }
@@ -771,13 +787,7 @@ button, input, textarea, select { font: inherit; }
   font-size: .72rem;
   letter-spacing: .055em;
 }
-.engineering-case-list summary i {
-  color: var(--sky);
-  font-style: normal;
-  font-size: 1.4rem;
-  transition: transform 180ms ease;
-}
-.engineering-case-list details[open] summary i { transform: rotate(45deg); }
+.engineering-case-list .accordion-action { color: var(--sky); }
 .engineering-case-content {
   display: grid;
   grid-template-columns: minmax(220px, .7fr) 1.8fr;

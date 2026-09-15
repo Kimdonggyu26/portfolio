@@ -46,7 +46,10 @@ function EngineeringCase({ item, defaultOpen }) {
       <summary>
         <span>{item.index}</span>
         <div><strong>{item.title}</strong><small>{item.tech}</small></div>
-        <i>+</i>
+        <span className="accordion-action">
+          <span className="accordion-action-open">접기 ↑</span>
+          <span className="accordion-action-closed">코드 보기 ↓</span>
+        </span>
       </summary>
       <div className="engineering-case-content">
         <div className="engineering-case-copy"><p>{item.body}</p><small>CAPTURE · {capture.file}</small></div>
@@ -126,7 +129,7 @@ export default function InvestomeDetail() {
         <div className="frame">
           <SectionLabel number="04">Backend Engineering</SectionLabel>
           <div className="engineering-grid">
-            <div className="engineering-title"><h2>핵심 백엔드 구현을<br />코드 중심으로 정리했습니다.</h2></div>
+            <div className="engineering-title"><h2>핵심 백엔드 구현을 코드 중심으로 정리했습니다.</h2></div>
             <div className="engineering-copy">
               <p>인증, 요청 검증과 예외 처리, 데이터 무결성처럼 서비스의 안정성과 직접 연결되는 구현만 선별했습니다.</p>
             </div>
@@ -157,15 +160,15 @@ export default function InvestomeDetail() {
         <h2>Problems met<br />in production.</h2>
         <div className="case-list">
           <details open>
-            <summary><span>01</span><strong>Vercel 배포 후 /api/ticker 404</strong><i>+</i></summary>
+            <summary><span>01</span><strong>Vercel 배포 후 /api/ticker 404</strong><span className="accordion-action"><span className="accordion-action-open">접기 ↑</span><span className="accordion-action-closed">내용 보기 ↓</span></span></summary>
             <div><p><b>원인</b> Vite middleware는 로컬 개발 서버에만 존재했고 운영 환경에는 실제 endpoint가 없었습니다.</p><p><b>해결</b> 외부 금융 API를 Vercel Functions로 이동해 배포 환경의 /api 경로와 실행 모델을 일치시켰습니다.</p></div>
           </details>
           <details>
-            <summary><span>02</span><strong>외부 API 실패와 누락 데이터</strong><i>+</i></summary>
+            <summary><span>02</span><strong>외부 API 실패와 누락 데이터</strong><span className="accordion-action"><span className="accordion-action-open">접기 ↑</span><span className="accordion-action-closed">내용 보기 ↓</span></span></summary>
             <div><p><b>원인</b> HTTP 성공과 화면에 필요한 필드의 완전성을 같은 것으로 판단했습니다.</p><p><b>해결</b> KIS → Yahoo fallback, Yahoo quote → chart metadata 보조 경로, 종목별 독립 처리와 stale cache를 적용했습니다.</p></div>
           </details>
           <details>
-            <summary><span>03</span><strong>게시글 삭제 시 연관 데이터 충돌</strong><i>+</i></summary>
+            <summary><span>03</span><strong>게시글 삭제 시 연관 데이터 충돌</strong><span className="accordion-action"><span className="accordion-action-open">접기 ↑</span><span className="accordion-action-closed">내용 보기 ↓</span></span></summary>
             <div><p><b>원인</b> FK가 연결된 추천과 댓글보다 게시글 삭제가 먼저 시도될 수 있었습니다.</p><p><b>해결</b> transaction 안에서 추천 → 댓글 → 게시글 순서를 명시하고 cascade/orphan removal을 정리했습니다.</p></div>
           </details>
         </div>
