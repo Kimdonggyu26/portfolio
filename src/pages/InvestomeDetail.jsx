@@ -69,7 +69,7 @@ export default function InvestomeDetail() {
         <div className="frame">
           <SectionLabel number="04">Engineering</SectionLabel>
           <div className="engineering-grid">
-            <div className="engineering-title"><h2>Authentication,<br />at one boundary.</h2></div>
+            <div className="engineering-title"><h2>인증 책임을,<br />하나의 경계로.</h2></div>
             <div className="engineering-copy">
               <p>로그인 성공 시 사용자 ID를 subject로 갖는 access token을 발급합니다. 이후 요청은 JwtAuthenticationFilter에서 검증하고 Authentication을 SecurityContext에 저장합니다.</p>
               <p>Controller가 Authorization 헤더를 반복 파싱하던 책임을 공통 경계로 옮겼고, 공개 조회와 인증이 필요한 쓰기 API를 SecurityFilterChain에서 구분했습니다.</p>

@@ -1,6 +1,12 @@
+import { useState } from 'react'
 import ImagePlaceholder from './ImagePlaceholder'
 
 export default function ProjectFeature({ feature, reverse = false }) {
+  const images = feature.images || [feature.image]
+  const [activeIndex, setActiveIndex] = useState(0)
+  const showPrevious = () => setActiveIndex((index) => (index - 1 + images.length) % images.length)
+  const showNext = () => setActiveIndex((index) => (index + 1) % images.length)
+
   return (
     <article className={`feature-row ${reverse ? 'feature-row--reverse' : ''}`}>
       <div className="feature-copy">
@@ -8,7 +14,14 @@ export default function ProjectFeature({ feature, reverse = false }) {
         <h3>{feature.title}</h3>
         <p>{feature.body}</p>
       </div>
-      <ImagePlaceholder src={`/images/projects/investome/${feature.image}`} alt={`${feature.title} 화면`} title={feature.title.toUpperCase()} recommendation={feature.recommendation} />
+      <div className="feature-gallery">
+        <ImagePlaceholder key={images[activeIndex]} src={`/images/projects/investome/${images[activeIndex]}`} alt={`${feature.title} 화면 ${activeIndex + 1}`} title={feature.title.toUpperCase()} recommendation={feature.recommendation} />
+        {images.length > 1 && <>
+          <button className="feature-gallery-button feature-gallery-button--previous" type="button" onClick={showPrevious} aria-label={`${feature.title} 이전 이미지`}>‹</button>
+          <button className="feature-gallery-button feature-gallery-button--next" type="button" onClick={showNext} aria-label={`${feature.title} 다음 이미지`}>›</button>
+          <span className="feature-gallery-count" aria-live="polite">{String(activeIndex + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}</span>
+        </>}
+      </div>
     </article>
   )
 }
