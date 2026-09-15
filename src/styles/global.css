@@ -703,3 +703,71 @@ button, input, textarea, select { font: inherit; }
     font-size: 1.7rem;
   }
 }
+
+
+/* Portfolio-focused detail copy and code */
+.feature-gallery-button {
+  width: 48px;
+  height: 64px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, .85);
+}
+.feature-gallery-button:hover,
+.feature-gallery-button:focus-visible {
+  background: transparent;
+  color: var(--sky);
+}
+.feature-gallery-button--previous { left: 8px; }
+.feature-gallery-button--next { right: 8px; }
+.feature-gallery-count {
+  right: 18px;
+  bottom: 14px;
+  padding: 0;
+  background: transparent;
+  color: #fff;
+  font-weight: 500;
+  text-shadow: 0 1px 7px rgba(0, 0, 0, .9);
+}
+.engineering-grid {
+  margin-bottom: clamp(48px, 5vw, 68px);
+}
+.engineering-code {
+  margin: 0 0 clamp(58px, 6vw, 82px);
+  border-block: 1px solid #6f91a5;
+  background: #12374e;
+}
+.engineering-code figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 15px 20px;
+  border-bottom: 1px solid #6f91a5;
+  color: var(--sky);
+  font-size: .75rem;
+  letter-spacing: .055em;
+}
+.engineering-code figcaption small {
+  color: #bdd1dc;
+  font-size: inherit;
+}
+.engineering-code pre {
+  margin: 0;
+  padding: clamp(22px, 3vw, 36px);
+  overflow-x: auto;
+  color: #edf7fc;
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: clamp(.78rem, 1vw, .9rem);
+  line-height: 1.7;
+  tab-size: 4;
+}
+.engineering-code code { font-family: inherit; }
+
+@media (max-width: 600px) {
+  .engineering-code figcaption {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+}

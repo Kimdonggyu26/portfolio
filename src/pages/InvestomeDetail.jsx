@@ -41,7 +41,7 @@ export default function InvestomeDetail() {
         <div className="frame">
           <SectionLabel number="02">Architecture</SectionLabel>
           <div className="architecture-intro">
-            <h2>두 개의 데이터 흐름,<br />분리된 책임.</h2>
+            <h2>외부 API와 자체 데이터의<br />책임을 분리했습니다.</h2>
             <p>Investome 자체 데이터는 Spring Boot가,<br />외부 금융 데이터는 Vercel Functions가 처리합니다.</p>
           </div>
           <div className="architecture-map" aria-label="Investome 시스템 구조">
@@ -69,26 +69,39 @@ export default function InvestomeDetail() {
         <div className="frame">
           <SectionLabel number="04">Engineering</SectionLabel>
           <div className="engineering-grid">
-            <div className="engineering-title"><h2>인증 책임을,<br />하나의 경계로.</h2></div>
+            <div className="engineering-title"><h2>JWT 인증 처리를<br />공통 필터로 분리했습니다.</h2></div>
             <div className="engineering-copy">
-              <p>로그인 성공 시 사용자 ID를 subject로 갖는 access token을 발급합니다. 이후 요청은 JwtAuthenticationFilter에서 검증하고 Authentication을 SecurityContext에 저장합니다.</p>
-              <p>Controller가 Authorization 헤더를 반복 파싱하던 책임을 공통 경계로 옮겼고, 공개 조회와 인증이 필요한 쓰기 API를 SecurityFilterChain에서 구분했습니다.</p>
+              <p>Controller마다 반복하던 토큰 검증을 JwtAuthenticationFilter로 옮겼습니다. 검증된 사용자 정보는 Authentication과 SecurityContext에 저장하고, Controller는 인증 결과만 전달받습니다.</p>
             </div>
           </div>
+          <figure className="engineering-code">
+            <figcaption><span>JwtAuthenticationFilter.java</span><small>토큰 검증 후 인증 정보 저장</small></figcaption>
+            <pre><code>{`Claims claims = jwtTokenProvider.parseClaims(
+    authorization.substring(7).trim()
+);
+Long userId = Long.parseLong(claims.getSubject());
+
+AuthenticatedUser principal =
+    new AuthenticatedUser(userId, email, role);
+
+UsernamePasswordAuthenticationToken authentication =
+    new UsernamePasswordAuthenticationToken(
+        principal, null,
+        List.of(new SimpleGrantedAuthority(authority))
+    );
+
+SecurityContextHolder.getContext()
+    .setAuthentication(authentication);`}</code></pre>
+          </figure>
           <div className="flow-line">
             {['React', 'Bearer Token', 'JWT Filter', 'SecurityContext', 'Controller'].map((item, index) => <div key={item}><span>0{index + 1}</span><strong>{item}</strong></div>)}
-          </div>
-          <div className="engineering-notes">
-            <div><span>Validation</span><p>Request DTO의 Bean Validation과 @Valid로 입력 형식을 검증합니다.</p></div>
-            <div><span>Exception</span><p>Custom Exception을 GlobalExceptionHandler가 공통 ErrorResponse로 변환합니다.</p></div>
-            <div><span>Turnstile</span><p>브라우저 token을 Spring 서버가 Cloudflare siteverify API로 재검증합니다.</p></div>
           </div>
         </div>
       </section>
 
       <section className="frame section-space refactoring">
         <SectionLabel number="05">Refactoring</SectionLabel>
-        <div className="refactor-heading"><h2>From repeated checks<br />to shared boundaries.</h2><p>기능을 바꾸기보다 책임이 있어야 할 위치를 다시 정리했습니다.</p></div>
+        <div className="refactor-heading"><h2>반복되던 처리를<br />공통 구조로 정리했습니다.</h2><p>기능을 바꾸기보다 책임이 있어야 할 위치를 다시 정리했습니다.</p></div>
         <div className="comparison">
           <div className="comparison-head"><span>Before</span><span>After</span></div>
           {[
