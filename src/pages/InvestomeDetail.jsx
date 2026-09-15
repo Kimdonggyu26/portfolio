@@ -157,7 +157,7 @@ export default function InvestomeDetail() {
 
       <section className="frame section-space troubleshooting">
         <SectionLabel number="06">Troubleshooting</SectionLabel>
-        <h2>Problems met<br />in production.</h2>
+        <h2>배포와 운영 과정에서 마주한 문제를 해결했습니다.</h2>
         <div className="case-list">
           <details open>
             <summary><span>01</span><strong>Vercel 배포 후 /api/ticker 404</strong><span className="accordion-action"><span className="accordion-action-open">접기 ↑</span><span className="accordion-action-closed">내용 보기 ↓</span></span></summary>

@@ -539,6 +539,12 @@ details[open] > summary .accordion-action-closed { display: none; }
 }
 
 
+/* Keep Korean copy readable without splitting words mid-phrase */
+.project-detail :is(h2, h3, p, blockquote, dd, summary strong) {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
 /* Investome detail refinements */
 .project-detail .detail-hero h1 {
   font-size: clamp(3.2rem, 6.4vw, 6.8rem);
